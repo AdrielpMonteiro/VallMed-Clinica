@@ -122,7 +122,7 @@ FRASES_CONHECIDAS, CATEGORIAS_CONHECIDAS = verificar_consistencia_dados(FRASES_C
 # Respostas pré-definidas para cada categoria identificada pelo chatbot
 RESPOSTAS_PRE_DEFINIDAS = {
     "SAUDAÇÃO": {
-        "initial": "Olá! Seja bem-vindo à nossa clínica. Como posso ajudar você hoje?"
+        "initial": "Olá! Seja bem-vindo à nossa clínica VollMed. Como posso ajudar você hoje?"
     },
     "AJUDA": {
         "initial": "Claro! Posso ajudar com  agendamentos, ou dúvidas gerais. O que você precisa?",
@@ -130,13 +130,15 @@ RESPOSTAS_PRE_DEFINIDAS = {
     },
     "INFORMAÇÃO": {
         "initial": (
-            "📋 **Informações da Clínica:**\n"
+            "📋 **Informações da Clínica VollMed :**\n"
             "• **Horário de Atendimento:** Segunda a Sexta, das 7h às 19h\n"
             "• **Telefone:** (11) 3333-4444\n"
-            "• **Endereço:** Rua Saúde Perfeita, 123 - Centro\n"
+            "• **Endereço:** Avenida Vida nova - 166  - Taboão da Serra - SP \n"
             "• **WhatsApp:** (11) 98888-7777"
+            "  **Faça já seu orçamento via whatsWapp !!"
+            "  **Sua saúde nossa Prioridade**"
         ),
-        "continuation": "Precisa de mais alguma informação sobre a clínica?"
+        "continuation": "Precisa de mais alguma informação sobre a clínica Vallmed?"
     },
     "CANCELAMENTO": {
         "initial": (
@@ -144,10 +146,7 @@ RESPOSTAS_PRE_DEFINIDAS = {
             "preciso transferir você para um de nossos atendentes. "
             "Aguarde um instante, por favor."
         ),
-        "continuation": (
-            "Entendi sobre o cancelamento. Vou te transferir para um atendente agora. "
-            "Tenha um ótimo dia!"
-        )
+        
     },
     "EXAMES": {
         "initial": "Nossos serviços de exames incluem:\n• Agendamento de Exames\n• Consulta de Resultados Online\nQual serviço você gostaria de usar?",
@@ -213,7 +212,7 @@ def carregar_ou_treinar_modelo_ml(frases: list, categorias: list) -> Pipeline:
 # Carrega ou treina o modelo de ML uma única vez quando o sistema inicia
 try:
     MODELO_CHATBOT_ML = carregar_ou_treinar_modelo_ml(FRASES_CONHECIDAS, CATEGORIAS_CONHECIDAS)
-    print(f"🚀 Chatbot inicializado com sucesso! Modelo pronto para uso.")
+    print(f" Olá , sou assistente virtual da VollMed !! Irei te auxiliar hoje ! ")
 except Exception as e:
     print(f"❌ Erro crítico ao inicializar o modelo: {e}")
     print("💡 Verifique se há dados suficientes na base de conhecimento.")
@@ -254,6 +253,7 @@ def obter_resposta_fallback(
         "ajuda": "AJUDA", "auxílio": "AJUDA", "socorro": "AJUDA", "dúvida": "AJUDA",
         "oi": "SAUDAÇÃO", "olá": "SAUDAÇÃO", "bom dia": "SAUDAÇÃO", "boa tarde": "SAUDAÇÃO", "boa noite": "SAUDAÇÃO",
         "orçamento": "VALORES", "preço": "VALORES", "valor": "VALORES", "quanto custa": "VALORES", "custa": "VALORES"
+    
     }
     
     for palavra, categoria_prioritaria in palavras_chave_prioritarias.items():
